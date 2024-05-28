@@ -17,7 +17,9 @@ public class MySQLStorage : IStorage {
             CREATE TABLE IF NOT EXISTS `{table}` (
                 `steamid` BIGINT UNSIGNED NOT NULL PRIMARY KEY,
                 `t_model` TEXT,
-                `ct_model` TEXT
+                `ct_model` TEXT,
+                `img` TEXT,
+                `img2` TEXT
             );
         """);
         // UPDATE #1
