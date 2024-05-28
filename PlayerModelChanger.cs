@@ -8,14 +8,19 @@ using CounterStrikeSharp.API.Modules.Utils;
 using Service;
 using System.Drawing;
 using CounterStrikeSharp.API.Modules.Config;
+using CounterStrikeSharp.API.Modules.Timers;
+using System.Text;
+using CounterStrikeSharp.API.Modules.Memory;
+using Newtonsoft.Json;
+using System.Security.Cryptography.X509Certificates;
 namespace PlayerModelChanger;
 
 public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
 {
     public override string ModuleName => "Player Model Changer";
-    public override string ModuleVersion => "1.4.1";
+    public override string ModuleVersion => "1.3.9";
 
-    public override string ModuleAuthor => "samyyc";
+    public override string ModuleAuthor => "samyyc & custom Astral";
     public required ModelConfig Config { get; set; }
     public required ModelService Service { get; set; }
 
@@ -43,6 +48,7 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
             RegisterListener<Listeners.OnServerPrecacheResources>(PrecacheResource);
         }
         RegisterEventHandler<EventPlayerSpawn>(OnPlayerSpawnEvent);
+        RegisterEventHandler<EventPlayerDeath>(OnPlayerDeath);
         RegisterListener<Listeners.OnMapEnd>(() => Unload(true));
 
         Console.WriteLine($"Player Model Changer loaded {Service.GetModelCount()} model(s) successfully.");
@@ -58,8 +64,6 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
 
     public override void Unload(bool hotReload)
     {
-      RemoveListener("OnServerPrecacheResources", PrecacheResource);
-      DeregisterEventHandler("EventPlayerSpawn", OnPlayerSpawnEvent, false);
     }
 
     public void ReloadConfig() {
@@ -68,8 +72,6 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
                     .MakeGenericMethod(typeof(ModelConfig))
                     .Invoke(null, new object[] { Path.GetFileName(ModuleDirectory) }) as IBasePluginConfig;
         OnConfigParsed((config as ModelConfig)!);
-        Unload(true);
-        Load(false);
         Service.ReloadConfig(ModuleDirectory, Config);
     }
     public void OnConfigParsed(ModelConfig config)
@@ -97,10 +99,6 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
             }
         }
 
-        if (config.ModelForBots == null) {
-          config.ModelForBots = new BotsConfig();
-        }
-
         if (config.MenuType.ToLower() != "chat" && config.MenuType.ToLower() != "centerhtml") {
             throw new Exception($"Unknown menu type: {config.MenuType}");
         }
@@ -115,6 +113,53 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
 
     // from https://github.com/Challengermode/cm-cs2-defaultskins/
     [GameEventHandler]
+    public HookResult OnPlayerDeath(EventPlayerDeath @event, GameEventInfo info)
+    {
+        if (!Enable)
+        {
+            return HookResult.Continue;
+        }
+
+        if (@event == null)
+        {
+            return HookResult.Continue;
+        }
+        CCSPlayerController player = @event.Userid;
+        if (player == null
+            || !player.IsValid
+            || player.PlayerPawn == null
+            || !player.PlayerPawn.IsValid
+            || player.PlayerPawn.Value == null
+            || !player.PlayerPawn.Value.IsValid)
+        {
+            return HookResult.Continue;
+        }
+
+        try
+        {
+            CsTeam team = (CsTeam)player.TeamNum;
+
+            if (player.AuthorizedSteamID == null)
+            {
+                // bot?
+                return HookResult.Continue;
+            }
+            if (team != CsTeam.Terrorist && team != CsTeam.CounterTerrorist)
+            {
+                return HookResult.Continue;
+            }
+
+
+            Server.ExecuteCommand("pmc_resynccache");// custom Astral say !rcon pmc_resynccache
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Could not set player model: {0}", ex);
+        }
+
+        return HookResult.Continue;
+    }
     public HookResult OnPlayerSpawnEvent(EventPlayerSpawn @event, GameEventInfo info) {
         
         if (!Enable) {
@@ -129,49 +174,24 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
         CCSPlayerController player = @event.Userid;
 
         if (player == null
-            || !player.IsValid)
+            || !player.IsValid
+            || player.PlayerPawn == null
+            || !player.PlayerPawn.IsValid
+            || player.PlayerPawn.Value == null
+            || !player.PlayerPawn.Value.IsValid)
         {
             return HookResult.Continue;
         }
         try
         {    
             CsTeam team = (CsTeam)player.TeamNum;
-              
-            if (team != CsTeam.Terrorist && team != CsTeam.CounterTerrorist) {
-                return HookResult.Continue;
-            }
-
-            if (player.IsBot) {
-              string modelindex = team == CsTeam.Terrorist ? Config.ModelForBots.T : Config.ModelForBots.CT;
-              if (modelindex == "") {
-                return HookResult.Continue;
-              }
-              var botmodel = Service.GetModel(modelindex);
-              if (botmodel != null) {
-                 SetModelNextServerFrame(player.Pawn.Value, botmodel.path, botmodel.disableleg);
-              } else {
-                  Server.NextFrame(() => {
-                      var originalRender = player.Pawn.Value.Render;
-                      player.Pawn.Value.Render = Color.FromArgb(255, originalRender.R, originalRender.G, originalRender.B);
-                  });
-              }
-            }
 
             if (player.AuthorizedSteamID == null) {
+                // bot?
                 return HookResult.Continue;
             }
-
-            if (
-            player.PlayerPawn == null
-            || !player.PlayerPawn.IsValid
-            || player.PlayerPawn.Value == null
-            || !player.PlayerPawn.Value.IsValid
-            ) {
-              return HookResult.Continue;
-            }
-            
-            if (Config.AutoResyncCache) {
-              Service.ResyncCache();
+            if (team != CsTeam.Terrorist && team != CsTeam.CounterTerrorist) {
+                return HookResult.Continue;
             }
 
             if (!Config.DisableAutoCheck) {
@@ -206,13 +226,13 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
         return HookResult.Continue;
     }
 
-    public static void SetModelNextServerFrame(CBasePlayerPawn pawn, string model, bool disableleg)
+    public static void SetModelNextServerFrame(CCSPlayerPawn playerPawn, string model, bool disableleg)
     {
         Server.NextFrame(() =>
         {
-            pawn.SetModel(model);
-            var originalRender = pawn.Render;
-            pawn.Render = Color.FromArgb(disableleg ? 254 : 255, originalRender.R, originalRender.G, originalRender.B);
+            playerPawn.SetModel(model);
+            var originalRender = playerPawn.Render;
+            playerPawn.Render = Color.FromArgb(disableleg ? 254 : 255, originalRender.R, originalRender.G, originalRender.B);
         });
     }
 }
