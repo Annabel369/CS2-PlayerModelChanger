@@ -18,7 +18,7 @@ namespace PlayerModelChanger;
 public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
 {
     public override string ModuleName => "Player Model Changer";
-    public override string ModuleVersion => "1.3.9";
+    public override string ModuleVersion => "6.6.6";
 
     public override string ModuleAuthor => "samyyc & custom Astral";
     public required ModelConfig Config { get; set; }
