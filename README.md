@@ -1,4 +1,6 @@
 # CS2-PlayerModelChanger
+
+
 A lightweighted counterstrikesharp plugin to change player model.
 
 If you like this plugin, please give a star :)
@@ -121,6 +123,12 @@ AddonConfig
 		"DisableAddonValidationForDemos" "1"
 	}
 ```
+
+		characters: https://mega.nz/file/zgoiBKBK
+
+		Key: RzSN2SfsznxBS2-a4dUkM6H_toZqAzJK74V0FNndV3s
+  
+		Web Site: https://github.com/astral3693/skinplayersweb/tree/main/Plugin
 
 **Step 2.** Launch `Counter-Strike 2 Workshop Tools`, then click `Create New Addon`
 
