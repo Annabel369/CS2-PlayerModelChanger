@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "CounterStrikeSharp.API/1.0.246": {
+      "CounterStrikeSharp.API/1.0.248": {
         "type": "package",
         "dependencies": {
           "McMaster.NETCore.Plugins": "1.4.0",
@@ -68,10 +68,10 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "Microsoft.Data.Sqlite/8.0.6": {
+      "Microsoft.Data.Sqlite/8.0.7": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "8.0.6",
+          "Microsoft.Data.Sqlite.Core": "8.0.7",
           "SQLitePCLRaw.bundle_e_sqlite3": "2.1.6"
         },
         "compile": {
@@ -81,7 +81,7 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.Data.Sqlite.Core/8.0.6": {
+      "Microsoft.Data.Sqlite.Core/8.0.7": {
         "type": "package",
         "dependencies": {
           "SQLitePCLRaw.core": "2.1.6"
@@ -1095,14 +1095,14 @@
     }
   },
   "libraries": {
-    "CounterStrikeSharp.API/1.0.246": {
-      "sha512": "yBQssKbCUeI8rfw1A28rsHziv1LQCWlsgjqDQgsQ5bIK319ijT0ER/Y8pK5ouTySjEYTz5HXAvfe8oLeZlxIlQ==",
+    "CounterStrikeSharp.API/1.0.248": {
+      "sha512": "Dn66gFsGfQiGtLjUhSYla9k07C2JFnjDJ4F0wUX+WT0kBRYGePgmolkGbD6XbgsQakIIgQWVq0YbwXVt6n/DxA==",
       "type": "package",
-      "path": "counterstrikesharp.api/1.0.246",
+      "path": "counterstrikesharp.api/1.0.248",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "counterstrikesharp.api.1.0.246.nupkg.sha512",
+        "counterstrikesharp.api.1.0.248.nupkg.sha512",
         "counterstrikesharp.api.nuspec",
         "lib/net8.0/CounterStrikeSharp.API.dll",
         "lib/net8.0/CounterStrikeSharp.API.runtimeconfig.json",
@@ -1214,24 +1214,24 @@
         "version.txt"
       ]
     },
-    "Microsoft.Data.Sqlite/8.0.6": {
-      "sha512": "YVzVtU1IoGsTiMAe0BNV9ssKyrUm6lBQJP6w2N4W29YrBYYtyCmTFmrNGjxaJtJXVqttu0sYkPxmStj/OnMFdg==",
+    "Microsoft.Data.Sqlite/8.0.7": {
+      "sha512": "Dqet4Vluq9E794GS1AzeIKwTLAchn8pbLdMh+8AgqIwNcppD8Fbd3O5IkykxMXNN0VSiLkAum0VARwlwjBsWIw==",
       "type": "package",
-      "path": "microsoft.data.sqlite/8.0.6",
+      "path": "microsoft.data.sqlite/8.0.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "PACKAGE.md",
         "lib/netstandard2.0/_._",
-        "microsoft.data.sqlite.8.0.6.nupkg.sha512",
+        "microsoft.data.sqlite.8.0.7.nupkg.sha512",
         "microsoft.data.sqlite.nuspec"
       ]
     },
-    "Microsoft.Data.Sqlite.Core/8.0.6": {
-      "sha512": "umhZ0ZF2RI81rGFTnYmCxI+Euj4Aqe/6Y4+8CxN9OVJNGDNIqB5laJ3wxQTU8zXCcm2k9F7FL+/6RVoOT4z1Fw==",
+    "Microsoft.Data.Sqlite.Core/8.0.7": {
+      "sha512": "3H5ht15zKtw9ma9v092kI0gjV+P45EbJPsmnkk/DNVz/yDPPVYSyCGytSatN2dZQ19ZazLg3gUzoBdsoO5V5JQ==",
       "type": "package",
-      "path": "microsoft.data.sqlite.core/8.0.6",
+      "path": "microsoft.data.sqlite.core/8.0.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1243,7 +1243,7 @@
         "lib/net8.0/Microsoft.Data.Sqlite.xml",
         "lib/netstandard2.0/Microsoft.Data.Sqlite.dll",
         "lib/netstandard2.0/Microsoft.Data.Sqlite.xml",
-        "microsoft.data.sqlite.core.8.0.6.nupkg.sha512",
+        "microsoft.data.sqlite.core.8.0.7.nupkg.sha512",
         "microsoft.data.sqlite.core.nuspec"
       ]
     },
@@ -2919,31 +2919,31 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "CounterStrikeSharp.API >= 1.0.246",
+      "CounterStrikeSharp.API >= 1.0.248",
       "Dapper >= 2.1.35",
-      "Microsoft.Data.Sqlite >= 8.0.6",
+      "Microsoft.Data.Sqlite >= 8.0.7",
       "MySQLConnector >= 2.3.7",
       "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amaur\\.nuget\\packages\\": {},
+    "C:\\Users\\Astral\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amaur\\OneDrive\\Área de Trabalho\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj",
+      "projectUniqueName": "C:\\Users\\Astral\\Downloads\\CS2-PlayerModelChanger-master\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj",
       "projectName": "PlayerModelChanger",
-      "projectPath": "C:\\Users\\amaur\\OneDrive\\Área de Trabalho\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj",
-      "packagesPath": "C:\\Users\\amaur\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amaur\\OneDrive\\Área de Trabalho\\CS2-PlayerModelChanger-master\\obj\\",
+      "projectPath": "C:\\Users\\Astral\\Downloads\\CS2-PlayerModelChanger-master\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj",
+      "packagesPath": "C:\\Users\\Astral\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Astral\\Downloads\\CS2-PlayerModelChanger-master\\CS2-PlayerModelChanger-master\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\amaur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Astral\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2979,7 +2979,7 @@
           "CounterStrikeSharp.API": {
             "include": "Compile",
             "target": "Package",
-            "version": "[1.0.246, )"
+            "version": "[1.0.248, )"
           },
           "Dapper": {
             "target": "Package",
@@ -2987,7 +2987,7 @@
           },
           "Microsoft.Data.Sqlite": {
             "target": "Package",
-            "version": "[8.0.6, )"
+            "version": "[8.0.7, )"
           },
           "MySQLConnector": {
             "target": "Package",
@@ -3014,7 +3014,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

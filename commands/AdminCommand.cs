@@ -12,7 +12,7 @@ public partial class PlayerModelChanger {
     }
 
     [ConsoleCommand("css_modeladmin", "Model admin command")]
-    [RequiresPermissionsOr("@pmc/admin","#pmc/admin")]
+    [RequiresPermissionsOr("@css/custom-permission", "#example_command")]
     public void AdminModelCommand(CCSPlayerController? caller, CommandInfo commandInfo) {
         if (commandInfo.ArgCount == 2 && commandInfo.GetArg(1) == "reload") {
             ReloadConfig();

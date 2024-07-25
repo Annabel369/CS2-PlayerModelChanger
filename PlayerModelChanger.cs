@@ -8,17 +8,12 @@ using CounterStrikeSharp.API.Modules.Utils;
 using Service;
 using System.Drawing;
 using CounterStrikeSharp.API.Modules.Config;
-using CounterStrikeSharp.API.Modules.Timers;
-using System.Text;
-using CounterStrikeSharp.API.Modules.Memory;
-using Newtonsoft.Json;
-using System.Security.Cryptography.X509Certificates;
 namespace PlayerModelChanger;
 
 public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
 {
     public override string ModuleName => "Player Model Changer";
-    public override string ModuleVersion => "6.6.6";
+    public override string ModuleVersion => "7.7.7";
 
     public override string ModuleAuthor => "samyyc & custom Astral";
     public required ModelConfig Config { get; set; }
@@ -124,7 +119,7 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
         {
             return HookResult.Continue;
         }
-        CCSPlayerController player = @event.Userid;
+        CCSPlayerController? player = @event.Userid;
         if (player == null
             || !player.IsValid
             || player.PlayerPawn == null
@@ -137,7 +132,7 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
 
         try
         {
-            CsTeam team = (CsTeam)player.TeamNum;
+            CsTeam? team = (CsTeam)player.TeamNum;
 
             if (player.AuthorizedSteamID == null)
             {
@@ -171,7 +166,7 @@ public partial class PlayerModelChanger : BasePlugin, IPluginConfig<ModelConfig>
             return HookResult.Continue;
         }
 
-        CCSPlayerController player = @event.Userid;
+        CCSPlayerController? player = @event.Userid;
 
         if (player == null
             || !player.IsValid

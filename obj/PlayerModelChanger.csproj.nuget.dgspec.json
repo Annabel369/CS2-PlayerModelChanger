@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\amaur\\OneDrive\\Área de Trabalho\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj": {}
+    "C:\\Users\\Astral\\Downloads\\CS2-PlayerModelChanger-master\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj": {}
   },
   "projects": {
-    "C:\\Users\\amaur\\OneDrive\\Área de Trabalho\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj": {
+    "C:\\Users\\Astral\\Downloads\\CS2-PlayerModelChanger-master\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amaur\\OneDrive\\Área de Trabalho\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj",
+        "projectUniqueName": "C:\\Users\\Astral\\Downloads\\CS2-PlayerModelChanger-master\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj",
         "projectName": "PlayerModelChanger",
-        "projectPath": "C:\\Users\\amaur\\OneDrive\\Área de Trabalho\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj",
-        "packagesPath": "C:\\Users\\amaur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amaur\\OneDrive\\Área de Trabalho\\CS2-PlayerModelChanger-master\\obj\\",
+        "projectPath": "C:\\Users\\Astral\\Downloads\\CS2-PlayerModelChanger-master\\CS2-PlayerModelChanger-master\\PlayerModelChanger.csproj",
+        "packagesPath": "C:\\Users\\Astral\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Astral\\Downloads\\CS2-PlayerModelChanger-master\\CS2-PlayerModelChanger-master\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\amaur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Astral\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -53,7 +53,7 @@
             "CounterStrikeSharp.API": {
               "include": "Compile",
               "target": "Package",
-              "version": "[1.0.246, )"
+              "version": "[1.0.248, )"
             },
             "Dapper": {
               "target": "Package",
@@ -61,7 +61,7 @@
             },
             "Microsoft.Data.Sqlite": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.7, )"
             },
             "MySQLConnector": {
               "target": "Package",
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
